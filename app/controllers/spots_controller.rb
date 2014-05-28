@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  before_action :authenticate_user!, :only => [:new, :create]
+
   def index
     @spots = Spot.all
   end
@@ -8,7 +10,7 @@ class SpotsController < ApplicationController
   end
 
   def create
-    Spot.create(spot_params)
+    current_user.spots.create(spot_params)
     redirect_to root_path
   end
 

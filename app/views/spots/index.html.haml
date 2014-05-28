@@ -6,5 +6,7 @@
     %br/
     %p= spot.description
     %br/
+    - if spot.user.present?
+      %small= spot.user.email
 
 
