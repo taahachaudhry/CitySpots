@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update]
 
   def index
     @spots = Spot.all
@@ -20,10 +20,18 @@ class SpotsController < ApplicationController
 
   def edit
     @spot = Spot.find(params[:id])
+
+    if @spot.user != current_user
+      return render :text => 'Not Allowed', :status => :forbidden
+    end
   end
 
   def update
     @spot = Spot.find(params[:id])
+    if @spot.user != current_user
+      return render :text => 'Not Allowed', :status => :forbidden
+    end
+
     @spot.update_attributes(spot_params)
     redirect_to root_path
   end
