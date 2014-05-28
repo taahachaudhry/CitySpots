@@ -1,6 +1,6 @@
 - @spots.each do |spot|
   .booyah-box.col-xs-10.col-xs-offset-1
-    %h3= spot.name
+    %h3= link_to spot.name, spot_path(spot)
     %i= spot.address
     %br/
     %br/

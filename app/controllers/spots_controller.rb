@@ -14,6 +14,10 @@ class SpotsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @spot = Spot.find(params[:id])
+  end
+
   private
 
   def spot_params
