@@ -10,8 +10,12 @@ class SpotsController < ApplicationController
   end
 
   def create
-    current_user.spots.create(spot_params)
-    redirect_to root_path
+    @spot=current_user.spots.create(spot_params)
+    if @spot.valid?
+      redirect_to root_path
+    else
+      render :new, :status => :unprocessable_entity
+    end
   end
 
   def show
@@ -33,7 +37,11 @@ class SpotsController < ApplicationController
     end
 
     @spot.update_attributes(spot_params)
-    redirect_to root_path
+    if @spot.valid?
+      redirect_to root_path
+    else
+      render :edit, :status => :unprocessable_entity
+    end
   end
 
   def destroy
