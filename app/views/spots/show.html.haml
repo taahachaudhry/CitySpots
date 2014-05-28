@@ -7,3 +7,4 @@
   %br/
   .pull-right
     = link_to 'Edit', edit_spot_path(@spot), :class => 'btn btn-primary'
+    = link_to 'Destroy', spot_path(@spot), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'},:class => 'btn btn-danger'
