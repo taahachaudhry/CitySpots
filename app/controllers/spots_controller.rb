@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create, :edit, :update]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   def index
     @spots = Spot.all
@@ -38,6 +38,10 @@ class SpotsController < ApplicationController
 
   def destroy
     @spot = Spot.find(params[:id])
+    if @spot.user != current_user
+      return render :text => 'Not Allowed', :status => :forbidden
+    end
+
     @spot.destroy
     redirect_to root_path
   end
