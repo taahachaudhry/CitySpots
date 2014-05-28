@@ -35,3 +35,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 550;
   letter-spacing: -0.3px;
 }
+
+.navbar-inverse .navbar-nav a{
+  color: #ecf0f1 !important;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+.navbar-inverse .navbar-nav a:hover{
+  background: #1C4673 !important;
+}
