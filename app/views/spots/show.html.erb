@@ -35,6 +35,8 @@
   <div id="map-canvas"></div>
   <% end %>
 
+  <br />
+
   <div class="pull-right">
     <% if current_user && current_user == @spot.user %>
       <%= link_to 'Edit', edit_spot_path(@spot), :class => 'btn btn-primary' %>
