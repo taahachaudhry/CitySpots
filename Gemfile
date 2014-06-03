@@ -46,3 +46,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'haml'
+gem 'geocoder'
+gem 'figaro'
