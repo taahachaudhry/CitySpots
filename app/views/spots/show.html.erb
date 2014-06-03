@@ -9,12 +9,14 @@
       height: 200px;
     }
   </style>
+
+  <% if @spot.latitude.present? && @spot.longitude.present? %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <script>
     function initialize() {
-      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+      var myLatlng = new google.maps.LatLng(<%= @spot.latitude %>,<%= @spot.longitude %>);
       var mapOptions = {
-        zoom: 4,
+        zoom: 12,
         center: myLatlng
       };
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -31,6 +33,7 @@
   </script>
 
   <div id="map-canvas"></div>
+  <% end %>
 
   <div class="pull-right">
     <% if current_user && current_user == @spot.user %>
