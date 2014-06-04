@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @spot = Spot.find(params[:spot_id])
     @spot.comments.create(comment_params.merge(:user=>current_user))
-    redirect_to places_path(@spot)
+    redirect_to spots_path(@spot)
   end
 
   private
