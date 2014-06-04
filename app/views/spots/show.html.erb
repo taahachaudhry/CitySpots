@@ -44,16 +44,41 @@
     <% end %>
   </div>
   <div class="clear"></div>
-    <%= simple_form_for @comment, :url => spot_comments_path(@spot) do |f| %>
-      <%= f.input :message %>
-      <%= f.input :rating, :as => :select, :collection => Comment::RATINGS %>
-      <%= f.submit "Add a Comment", :class => 'btn btn-primary' %>
-    <% end %>
 
-  <h3>Comments</h3>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @comment, :url => spot_comments_path(@spot) do |f| %>
+            <%= f.input :message %>
+            <%= f.input :rating, :as => :select, :collection => Comment::RATINGS %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Add a Comment", :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="pull-left">Reviews</h3>
+  <!-- Button trigger modal -->
+  <div class="pull-right">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="
+    margin-top: 5px;">
+    Add a comment
+  </button>
+  </div>
+  <div class="clear"></div>
 
   <% @spot.comments.each do |comment| %>
-    <div>
+    <div class="col-xs-12 col-sm-6">
       <blockquote>
         <% if comment.humanized_rating.present? %>
           <b><%= comment.humanized_rating %></b> -
