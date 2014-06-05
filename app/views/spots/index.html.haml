@@ -11,8 +11,8 @@
     - if spot.comments.present?
       .col-xs-12
       %blockquote
-        - if spot.comments.last.humanized_rating.present?
-          %b= spot.comments.last.humanized_rating
+        - if spot.comments.first.humanized_rating.present?
+          %b= spot.comments.first.humanized_rating
           \-
-        = spot.comments.last.message
-        %small= spot.comments.last.user.first_name
+        = spot.comments.first.message
+        %small= spot.comments.first.user.first_name
