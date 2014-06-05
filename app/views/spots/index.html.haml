@@ -8,5 +8,11 @@
     %br/
     - if spot.user.present?
       %small= spot.user.first_name
-
-
+    - if spot.comments.present?
+      .col-xs-12
+      %blockquote
+        - if spot.comments.last.humanized_rating.present?
+          %b= spot.comments.last.humanized_rating
+          \-
+        = spot.comments.last.message
+        %small= spot.comments.last.user.first_name
