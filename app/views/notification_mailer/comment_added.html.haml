@@ -1,7 +1,10 @@
 %p Hey There!
 %p
   Congrats!
-  %b A comment has been added on CitySpots
+  = succeed "." do
+    %b A comment has been added on CitySpots
+  = link_to 'here', spot_url(@spot)
+  \.
 Aloha,
 %br/
-htc
+CitySpots
